@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.ViewCompat;
+import androidx.core.graphics.Insets;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 
