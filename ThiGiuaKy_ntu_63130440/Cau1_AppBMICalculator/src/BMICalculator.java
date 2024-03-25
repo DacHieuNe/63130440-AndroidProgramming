@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class BMICalculator extends JFrame implements ActionListener {
 
     // ...
-	private JLabel lblHeight, lblWeight, lblBMI, lblResult;
+    private JLabel lblHeight, lblWeight, lblBMI, lblResult;
     private JTextField txtHeight, txtWeight;
     private JButton btnCalculate;
     private JTextArea txtResultArea;
@@ -21,8 +21,9 @@ public class BMICalculator extends JFrame implements ActionListener {
         lblBMI = new JLabel("Chỉ số BMI:");
         lblResult = new JLabel("Kết quả:");
 
-        txtHeight = new JTextField();
-        txtWeight = new JTextField();
+        // Set wider text fields (adjust columns as needed)
+        txtHeight = new JTextField(10);  // 10 columns wide
+        txtWeight = new JTextField(10);
 
         btnCalculate = new JButton("Tính toán");
         btnCalculate.addActionListener(this);
@@ -37,23 +38,23 @@ public class BMICalculator extends JFrame implements ActionListener {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
 
-        gbc.gridx = 1;
+        gbc.gridx = 0;
         gbc.gridy = 0;
         panel.add(lblHeight, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        panel.add(txtHeight, gbc);
-
         gbc.gridx = 1;
         gbc.gridy = 0;
-        panel.add(lblWeight, gbc);
+        panel.add(txtHeight, gbc);
 
         gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(lblWeight, gbc);
+
+        gbc.gridx = 1;
         gbc.gridy = 1;
         panel.add(txtWeight, gbc);
 
-        gbc.gridx = 1;
+        gbc.gridx = 0;
         gbc.gridy = 2;
         panel.add(btnCalculate, gbc);
 
@@ -84,7 +85,7 @@ public class BMICalculator extends JFrame implements ActionListener {
                 result = "Thiếu cân";
             } else if (bmi < 25) {
                 result = "Bình thường";
-            } else if (bmi < 30){
+            } else if (bmi < 30) {
                 result = "Thừa cân";
             } else {
                 result = "Béo phì";
@@ -92,15 +93,14 @@ public class BMICalculator extends JFrame implements ActionListener {
 
             // Hiển thị kết quả
             txtResultArea.setText("Chỉ số BMI của bạn là: " + String.format("%.2f", bmi) + "\n"
-                + "Kết quả: " + result);
-                    } catch (NumberFormatException ex) {
-                        // Hiển thị thông báo lỗi
-                        JOptionPane.showMessageDialog(this, "Dữ liệu nhập vào không hợp lệ!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
+                    + "Kết quả: " + result);
+        } catch (NumberFormatException ex) {
+            // Hiển thị thông báo lỗi
+            JOptionPane.showMessageDialog(this, "Dữ liệu nhập vào không hợp lệ! Vui lòng nhập số thực.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
-                public static void main(String[] args) {
-                    new BMICalculator().setVisible(true);
-                }
-            }
-
+    public static void main(String[] args) {
+        new BMICalculator().setVisible(true);
+    }
+}
