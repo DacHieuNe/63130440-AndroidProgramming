@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private EditText heightInput;
-
+	private EditText weightInput;
     private Button calculateButton;
     private TextView resultText;
     @Override
